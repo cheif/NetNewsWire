@@ -91,7 +91,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 		CacheCleaner.purgeIfNecessary()
 		initializeDownloaders()
 		initializeHomeScreenQuickActions()
-		
+		AppIntentsDataManager.setup(
+			accountManager: AccountManager.shared,
+			smartFeedsController: SmartFeedsController.shared
+		)
+
 		DispatchQueue.main.async {
 			self.unreadCount = AccountManager.shared.unreadCount
 		}
